@@ -1,0 +1,33 @@
+{
+  "name": "letxchat",
+  "version": "1.0.0",
+  "description": "A workplace communication app",
+  "main": "server.js",
+  "scripts": {
+    "start":"node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliezergyan/LetXChat.git"
+  },
+  "author": "Eliezer Kwasi Gyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eliezergyan/LetXChat/issues"
+  },
+  "homepage": "https://github.com/eliezergyan/LetXChat#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.0",
+    "nodemon": "^2.0.16"
+  }
+}
