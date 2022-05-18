@@ -1,12 +1,15 @@
 const asyncHandler = require('express-async-handler')
 
+const Message = require('../models/messageModel')
 
 // @desc    Get messages
 // @route   GET /api/messages
 // @access  Public
 
 const getMessages = asyncHandler( async (req, res) => {
-    res.status(200).json({ message: 'get messages' })
+    const messages = await Message.find();
+
+    res.status(200).json(messages)
 })
 
 // @desc    Create a message
@@ -14,7 +17,14 @@ const getMessages = asyncHandler( async (req, res) => {
 // @access  Public
 
 const createMessage = asyncHandler( async (req, res) => {
-    res.status(200).json({ message: 'create a message' })
+    const message = await Message.create({
+        user,
+        chatroom,
+        messageBody: req.body.text,
+        messageStatus,
+    })
+
+    res.status(200).json(message)
 })
 
 // @desc    Edit message
