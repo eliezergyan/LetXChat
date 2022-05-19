@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Container, Col, Row, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import "./Signup.css"
@@ -10,6 +10,9 @@ function validateImg () {
 
 function Signup() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
   return (
       <Container>
           <Row>
