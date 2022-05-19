@@ -8,6 +8,10 @@ function validateImg () {
 
 }
 
+function handleSignup (e) {
+  e.preventDefault()
+}
+
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +22,7 @@ function Signup() {
           <Row>
           <Col md={5} className="signup__bg"></Col>
           <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column"> 
-              <Form style={{width: '80%', maxWidth: 500}}>
+              <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleSignup}>
               <h1 className='text-center'>Create account</h1>
               <div className='signup-profile-pic__container'>
                 <img src={botImg} className='signup-profile-pic'/>
@@ -29,17 +33,17 @@ function Signup() {
               </div>
               <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" />
+              <Form.Control type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name}/>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email}/>
               </Form.Group>
           
               <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
               </Form.Group>
               <Button variant="primary" type="submit">Create account</Button>
               <div className="py-4">
