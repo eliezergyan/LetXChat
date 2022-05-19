@@ -2,6 +2,8 @@ const router = require('express').Router()
 const User = require('../models/User')
 
 // Creating User
+// Unique email not working
+// Fix it later
 router.post('/', async(req, res) => {
     try {
         const { name, email, password, picture } = req.body
@@ -10,7 +12,7 @@ router.post('/', async(req, res) => {
         res.status(201).json(user)
     } catch (error) {
        let msg;
-       if(error.code === 11000){
+       if(error.code == 11000){
            msg = 'User already exists'
        } else {
            msg = error.message
@@ -35,3 +37,4 @@ router.post('/login', async(req, res) => {
     }
 })
 
+module.exports = router
