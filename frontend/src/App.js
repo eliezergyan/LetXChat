@@ -6,8 +6,12 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Chat from './pages/Chat';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 function App() {
+  const [rooms, setRooms] = useState([]);
+  const [currentRoom, setCurrentRoom] = useState([]);
+  const [members, setMembers] = useState([]);
   const user = useSelector((state) => state.user);
 
   return (
