@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes')
 
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
+const Message = require('./models/Message')
 const port = process.env.PORT || 5000 
 
 // These chatroooms are hardcoded
@@ -25,12 +26,46 @@ app.use('/users', userRoutes)
 
 
 const server = require('http').createServer(app)
-const io = require('socket.io', (server, {
+const io = require('socket.io')(server, {
     cors: {
         origin: 'http://localhost:3000',
         methods: ['GET', 'POST']
     }
-}))
+})
+
+app.get('/rooms', (req, res) => {
+    res.json(rooms)
+})
+
+// Get last messages from room
+async function getLastMessagesFromRoom(room){
+    let roomMessages = await Message.aggregate([
+        {$match: {to: room}},
+        {$group: {_id: '$date', messagesByDate: {$push: '$$ROOT'}}}
+    ])
+    return roomMessages;
+}
+
+// Sort room by date
+function sortRoomMessagesByDate(messages){
+    return messages.sort(function(a, b){
+        let date1 = a._id.split('/');
+        let date2 = b._id.split('/');
+
+        date1 = date1[2] / date[0]
+    })
+}
+
+// Socket connection
+io.on('connection', (socket)=>{
+
+    socket.on('join-room', async(room) => {
+        socket.join(room);
+        let roomMessages = await getLastMessagesFromRoom(room);
+    })
+})
+
+
 
 server.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
