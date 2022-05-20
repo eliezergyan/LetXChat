@@ -12,6 +12,9 @@ function Navigation() {
     async function handleLogout(e){
         e.preventDefault();
         await logoutUser(user);
+
+        // Return to the homepage
+        window.location.replace("/")
     }
 
   return (
