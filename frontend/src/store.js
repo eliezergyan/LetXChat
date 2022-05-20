@@ -9,10 +9,30 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 // reducers
+const reducers = combineReducers({
+    user: userSlice,
+    [appApi.reducerPath]: appApi.reducer,
+
+})
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    blackList: [appApi.reducerPath]
+}
+
+// persist our store
+const persistedReducer = persistReducer(persistConfig, reducers)
 
 
+// creating the store
+const store =  configureStore({
+    reducer: persistedReducer,
+    middleware: [thunk, appApi.middleware]
+})
 
 
+export default store;
 
 
 
