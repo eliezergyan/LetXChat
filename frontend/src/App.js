@@ -7,13 +7,17 @@ import Login from './pages/Login';
 import Chat from './pages/Chat';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import {} from './context/appContext'
 
 function App() {
   const [rooms, setRooms] = useState([]);
   const [currentRoom, setCurrentRoom] = useState([]);
   const [members, setMembers] = useState([]);
-  const user = useSelector((state) => state.user);
+  const [messages, setMessages] = useState([]);
+  const [privateMemberMsg, setPrivateMemberMsg] = useState({});
+  const [newMessages, setNewMessages] = useState({});
 
+  const user = useSelector((state) => state.user);
   return (
     <BrowserRouter>
       <Navigation />
