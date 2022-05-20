@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Container, Col, Row, Button } from 'react-bootstrap'
-import { Link } from "react-router-dom"
+import { useSignupUserMutation } from '../services/appApi';
+import { Link, useNavigate } from "react-router-dom"
 import "./Signup.css"
 import botImg from "../assets/profile-pic-bot.jpg"
 
@@ -9,6 +10,8 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const navigate = useNavigate()
+  const [ signupUser, { isLoading, error }] = useSignupUserMutation();
 
   // Image upload state
   const [image, setImage] = useState(null);
@@ -51,10 +54,14 @@ function Signup() {
     e.preventDefault()
     if(!image) return alert("Please upload your profile picture")
     const url = await uploadImage(image)
-    console.log(url);
 
     // Register user
-
+    signupUser({name, email, password, picture: url}).then(({data}) => {
+      if(data) {
+        console.log(data);
+        navigate('/login');
+      }
+    })
   }
 
   return (
