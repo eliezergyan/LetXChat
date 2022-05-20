@@ -1,15 +1,17 @@
 import React from 'react'
 import { Nav, Navbar, Container, NavDropdown, Button} from 'react-bootstrap'
-import {} from '../services/appApi'
+import { useLogoutUserMutation } from '../services/appApi'
 import { useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../assets/logo.png'
 
 function Navigation() {
     const user = useSelector(state => state.user)
+    const [logoutUser] = useLogoutUserMutation()
 
-    function handleLogout(){
-
+    async function handleLogout(e){
+        e.preventDefault();
+        await logoutUser(user);
     }
 
   return (
