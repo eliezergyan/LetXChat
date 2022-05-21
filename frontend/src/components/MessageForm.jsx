@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import {AppContext} from '../context/appContext';
 import './MessageForm.css'
 
 function MessageForm() {
     const [message, setMessage] = useState("");
+    const user = useSelector((user) => user.state);
+    const {} = useContext(AppContext);
 
     function getFormattedDate() {
         const date = new Date();
@@ -16,14 +19,13 @@ function MessageForm() {
 
         day = day.length > 1 ? day : '0' + day;
 
-        return month + "/" + day + "/" + year;
+        return month + "/" + day + "/" + year;  
     }
 
     function handleSubmit(e) {
        e.preventDefault() 
     }
 
-    const user = useSelector(state => state.user)
 
     return (
         <>
