@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import './MessageForm.css'
 
 function MessageForm() {
+    const [message, setMessage] = useState("");
+
     function handleSubmit(e) {
        e.preventDefault() 
     }
