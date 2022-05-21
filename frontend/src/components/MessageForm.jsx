@@ -6,6 +6,10 @@ import './MessageForm.css'
 function MessageForm() {
     const [message, setMessage] = useState("");
 
+    function getFormattedDate() {
+
+    }
+
     function handleSubmit(e) {
        e.preventDefault() 
     }
