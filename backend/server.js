@@ -87,9 +87,15 @@ io.on('connection', (socket)=>{
     app.delete('/logout', async(req, res) => {
         try {
             const {_id, newMessages} = req.body;
-            
+            const user = await User.finById(_id);
+            user.status = "offline";
+            user.newMessages = newMessages;
+            await user.save();
+            const members = await User.find();
+            socket.broadcast.emit('new-user', members);
+            res.status(200).send();
         } catch (error) {
-            
+            console.log();
         }
     })
 })
