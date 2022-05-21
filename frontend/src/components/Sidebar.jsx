@@ -40,11 +40,13 @@ function Sidebar() {
       </ListGroup>
 
       <h2>Members</h2>
-      {members.map((member) => (
-        <ListGroup.Item key={member.id} style={{cursor: 'pointer'}}> 
-          {member.name}
-        </ListGroup.Item>
+      <ListGroup>
+        {members.map((member) => (
+          <ListGroup.Item key={member.id} style={{cursor: 'pointer'}}> 
+            {member.name}
+          </ListGroup.Item>
         ))}
+      </ListGroup>
     </>
   )
 }
