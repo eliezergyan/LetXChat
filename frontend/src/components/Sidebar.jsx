@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { AppContext } from '../context/appContext'
@@ -7,13 +7,27 @@ function Sidebar() {
   const user = useSelector(state => state.user);
   const { socket, setMembers, members, setCurrentRoom, setRooms, privateMemberMsg, rooms, setPrivateMemberMsg, currentRoom } = useContext(AppContext);
 
+  useEffect(()=>{
+    if(user){
+      setCurrentRoom('general');
+      getRooms();
+      socket.emit('join-room', 'general');
+      socket.emit('new-user');
+    }
+  }, [])
+  
   socket.off('new-user').on('new-user', (payload)=>{
     setMembers(payload);
   })
 
+  function getRooms(){
+    fetch('http://localhost:5000/rooms').then(res => res.json()).then(data => setRooms(data))
+  }
+
   if(!user){
     return(<></>)
   }
+
   return (
     <>
       <h2>Chatrooms</h2>

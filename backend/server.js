@@ -73,6 +73,9 @@ io.on('connection', (socket)=>{
         roomMessages = sortRoomMessagesByDate(roomMessages);
         socket.emit('room-messages', roomMessages)
     })
+    socket.on('message-room', async(room, content, sender, time, date) => {
+        
+    })
 })
 
 
