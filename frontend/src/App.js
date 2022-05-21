@@ -19,9 +19,9 @@ function App() {
 
   const user = useSelector((state) => state.user);
   return (
-    <AppContext.Provider value={(socket, currentRoom, setCurrentRoom, members, 
+    <AppContext.Provider value={{socket, currentRoom, setCurrentRoom, members, 
       setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, 
-      newMessages, setNewMessages, rooms, setRooms)}>
+      newMessages, setNewMessages, rooms, setRooms}}>
       <BrowserRouter>
         <Navigation />
         <Routes>
