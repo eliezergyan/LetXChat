@@ -28,6 +28,11 @@ function MessageForm() {
 
     const todayDate = getFormattedDate();
 
+    socket.off("room-messages").on("room-messages", (roomMessages) => {
+        console.log("room messages", roomMessages);
+        setMessages(roomMessages);
+    });
+
     function handleSubmit(e) {
         e.preventDefault() 
         if(!message) return;
