@@ -30,6 +30,7 @@ function App() {
           <>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<Signup />}/>
+            {/* Edit profile route */}
           </>
           )}
           <Route path='/chat' element={<Chat />}/>

@@ -33,11 +33,21 @@ const appApi = createApi({
                 method: 'DELETE',
                 body: payload,
             })
-        })
+        }),
+
+        // Edit the user profile
+        editUser: builder.mutation({
+            query: (payload) => ({
+                url: '/users/profile',
+                method: 'PUT',
+                body: payload,
+            })
+        }),
+
     })
 })
 
 
-export const { useSignupUserMutation, useLoginUserMutation, useLogoutUserMutation } = appApi;
+export const { useSignupUserMutation, useLoginUserMutation, useLogoutUserMutation, useEditUserMutation } = appApi;
 
 export default appApi;
