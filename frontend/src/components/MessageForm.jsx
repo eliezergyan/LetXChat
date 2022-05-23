@@ -1,3 +1,4 @@
+import { send } from 'express/lib/response';
 import React, { useContext, useState } from 'react'
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
@@ -54,7 +55,12 @@ function MessageForm() {
                         <p className='alert alert-info text-center message-date-indicator'>{date}</p>
                         {messagesByDate?.map(({content, time, from: sender}, msgIdx) => (
                             <div className='message' key={msgIdx}>
-                                <p>{content}</p>
+                                <div className='message-inner'>
+                                    <div className='d-flex align-items-center mb-3'>
+                                        <img src={sender.picture} style={{width: 35, height: 35, objectFit: 'cover', borderRadius: '50%', marginRight: 10}}/>
+                                        <p className='message-sender'></p>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
