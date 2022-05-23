@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppContext } from '../context/appContext'
 import { addNotifications, resetNotifications } from '../features/userSlice'
@@ -68,7 +68,7 @@ function Sidebar() {
       <h2>Chatrooms</h2>
       <ListGroup>
         {rooms.map((room, idx) => (
-            <ListGroup.Item key={idx} onClick={()=> joinRoom(room)} active={room == currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
+            <ListGroup.Item key={idx} onClick={()=> joinRoom(room)} active={room === currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
                 {room}{currentRoom !== room && <span className="badge rounded-pill bg-primary">{user.newMessages[room]}</span>}
             </ListGroup.Item>
       ))}
@@ -77,12 +77,12 @@ function Sidebar() {
       <h2>Members</h2>
       <ListGroup>
         {members.map((member) => (
-          <ListGroup.Item key={member.id} style={{cursor: 'pointer'}} active={privateMemberMsg?._id == member._id} onClick={()=> handlePrivateMemberMsg(member)} disabled={member._id === user._id}> 
-            {member.name}
+          <ListGroup.Item key={member.id} style={{cursor: 'pointer'}} active={privateMemberMsg?._id === member._id} onClick={()=> handlePrivateMemberMsg(member)} disabled={member._id === user._id}> 
+        {/*{member.name}*/}
             <Row>
               <Col xs={2} className="member-status">
-                <img src={member.picture} className="member-status-img"/>
-                {member.status == "online"}
+                <img src={member.picture} className="member-status-img" alt="member-status"/>
+                {member.status === "online" ? <i className="fas fa-circle sidebar-online-status"></i> : <i className="fas fa-circle sidebar-offline-status"></i>}
               </Col>
             </Row>
           </ListGroup.Item>
