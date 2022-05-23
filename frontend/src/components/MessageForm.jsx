@@ -58,8 +58,9 @@ function MessageForm() {
                                 <div className='message-inner'>
                                     <div className='d-flex align-items-center mb-3'>
                                         <img src={sender.picture} style={{width: 35, height: 35, objectFit: 'cover', borderRadius: '50%', marginRight: 10}}/>
-                                        <p className='message-sender'></p>
+                                        <p className='message-sender'>{sender._id == user?._id? "You" : sender.name}</p>
                                     </div>
+                                    
                                 </div>
                             </div>
                         ))}
