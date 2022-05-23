@@ -49,7 +49,7 @@ function Sidebar() {
   function handlePrivateMemberMsg(member){
     setPrivateMemberMsg(member);
     const roomId = orderIds(user._id, member._id);
-    joinRoom()
+    joinRoom(roomId, false)
   }
 
   if(!user){
