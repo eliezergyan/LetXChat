@@ -7,6 +7,20 @@ function Sidebar() {
   const user = useSelector(state => state.user);
   const { socket, setMembers, members, setCurrentRoom, setRooms, privateMemberMsg, rooms, setPrivateMemberMsg, currentRoom } = useContext(AppContext);
 
+  function joinRoom(room, isPublic = true){
+    if(!user){
+      return alert('Please login');
+    }
+    socket.emit('join-room', room);
+    setCurrentRoom(room);
+
+    if(isPublic){
+      setPrivateMemberMsg(null);
+    }
+
+    // dispatch for notifications
+  }
+
   useEffect(()=>{
     if(user){
       setCurrentRoom('general');
@@ -33,8 +47,8 @@ function Sidebar() {
       <h2>Chatrooms</h2>
       <ListGroup>
         {rooms.map((room, idx) => (
-            <ListGroup.Item key={idx}>
-                {room}
+            <ListGroup.Item key={idx} onClick={()=> joinRoom(room)} active={room == currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
+                {room}{currentRoom !== room && <span></span>}
             </ListGroup.Item>
       ))}
       </ListGroup>
