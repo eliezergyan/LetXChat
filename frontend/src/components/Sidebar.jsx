@@ -69,7 +69,7 @@ function Sidebar() {
       <ListGroup>
         {rooms.map((room, idx) => (
             <ListGroup.Item key={idx} onClick={()=> joinRoom(room)} active={room == currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
-                {room}{currentRoom !== room && <span className="badge rounded-pill bg-primary">{}</span>}
+                {room}{currentRoom !== room && <span className="badge rounded-pill bg-primary">{user.newMessages[room]}</span>}
             </ListGroup.Item>
       ))}
       </ListGroup>
@@ -79,6 +79,11 @@ function Sidebar() {
         {members.map((member) => (
           <ListGroup.Item key={member.id} style={{cursor: 'pointer'}} active={privateMemberMsg?._id == member._id} onClick={()=> handlePrivateMemberMsg(member)} disabled={member._id === user._id}> 
             {member.name}
+            <Row>
+              <Col xs={2} className="member-status">
+                <img src={member.picture} className={}/>
+              </Col>
+            </Row>
           </ListGroup.Item>
         ))}
       </ListGroup>
