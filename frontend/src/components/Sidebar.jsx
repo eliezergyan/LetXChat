@@ -3,6 +3,7 @@ import { ListGroup, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppContext } from '../context/appContext'
 import { addNotifications, resetNotifications } from '../features/userSlice'
+import "./Sidebar.css";
 
 function Sidebar() {
   const user = useSelector(state => state.user);
@@ -23,10 +24,12 @@ function Sidebar() {
     // dispatch for notifications
     dispatch(resetNotifications(room));
 
-    socket.off('notifications').on('notifications', (room) => {
-      dispatch(addNotifications(room))
-    });
+
   }
+
+  socket.off('notifications').on('notifications', (room) => {
+    if(currentRoom !== room)  dispatch(addNotifications(room))
+  });
 
   useEffect(()=>{
     if(user){
@@ -78,11 +81,18 @@ function Sidebar() {
       <ListGroup>
         {members.map((member) => (
           <ListGroup.Item key={member.id} style={{cursor: 'pointer'}} active={privateMemberMsg?._id === member._id} onClick={()=> handlePrivateMemberMsg(member)} disabled={member._id === user._id}> 
-        {/*{member.name}*/}
             <Row>
               <Col xs={2} className="member-status">
                 <img src={member.picture} className="member-status-img" alt="member-status"/>
                 {member.status === "online" ? <i className="fas fa-circle sidebar-online-status"></i> : <i className="fas fa-circle sidebar-offline-status"></i>}
+              </Col>
+              <Col xs={9}>
+                {member.name}
+                {member._id === user?._id && (" (You)")}
+                {member.status === "offline" && (" (Offline)")}
+              </Col>
+              <Col xs={1}>
+                <span className="badge rounded-pill bg-primary">{user.newMessages[orderIds(member._id, user._id)]}</span>
               </Col>
             </Row>
           </ListGroup.Item>
