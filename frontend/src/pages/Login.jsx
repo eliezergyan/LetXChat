@@ -34,7 +34,7 @@ function Login() {
             <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column"> 
                 <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                {error && }
+                {error && <p className="alert alert"></p>}
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
                 <Form.Text className="text-muted">
