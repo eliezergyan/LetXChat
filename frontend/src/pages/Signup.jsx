@@ -78,6 +78,7 @@ function Signup() {
                 </label>
                 <input type="file" id="image-upload" hidden accept="image/png, img/jpeg img/jpg" onChange={validateImg}/>
               </div>
+              {error && <p className='alert alert-danger'>{error.data}</p>}
               <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name}/>
@@ -93,7 +94,7 @@ function Signup() {
               <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
               </Form.Group>
               <Button variant="primary" type="submit">
-                {uploadingImg ? 'Signing you up...' : 'Signup'}
+                {uploadingImg || isLoading ? 'Signing you up...' : 'Signup'}
               </Button>
               <div className="py-4">
                   <p className="text-center">
