@@ -81,7 +81,8 @@ function Sidebar() {
             {member.name}
             <Row>
               <Col xs={2} className="member-status">
-                <img src={member.picture} className={}/>
+                <img src={member.picture} className="member-status-img"/>
+                {member.status == "online"}
               </Col>
             </Row>
           </ListGroup.Item>
