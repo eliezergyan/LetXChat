@@ -14,7 +14,7 @@ function Sidebar() {
     if(!user){
       return alert('Please login');
     }
-    socket.emit('join-room', room);
+    socket.emit('join-room', room, currentRoom);
     setCurrentRoom(room);
 
     if(isPublic){
