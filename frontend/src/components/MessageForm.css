@@ -23,16 +23,21 @@
     background-color: #ffdab9;
 }
 
-.incoming-message {
+.message {
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
+    margin-right: 25px;
+}
+
+.incoming-message {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 15px;
 }
 
 .message-timestamp-left {
     font-size: 0.85em;
     font-weight: 300;
-    margin-top: 10px;
 }
 
 .message-sender {
