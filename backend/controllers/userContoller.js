@@ -3,9 +3,9 @@ const User = require('../models/User')
 // Unique email not working
 const registerUser = async(req, res) => {
     try {
-        const { name, email, password, picture } = req.body
+        const { name, email, password, employeeId, username, picture } = req.body
         console.log(req.body)
-        const user = await User.create({name, email, password, picture})
+        const user = await User.create({ name, email, password, employeeId, username, picture })
         res.status(201).json(user)
     } catch (error) {
        let msg;
