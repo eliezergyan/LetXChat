@@ -29,9 +29,7 @@ function Login() {
     return (
         <Container>
             <Row>
-            <Col md={5} className="login__bg">
-            </Col>
-            <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column"> 
+            <Col md={15} className="d-flex align-items-center justify-content-center flex-direction-column mt-5"> 
                 <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                 {error && <p className="alert alert-danger">{error.data}</p>}

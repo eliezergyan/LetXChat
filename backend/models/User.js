@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
     },
     picture: {
         type: String,
-
+        default: 'https://www.nicepng.com/png/detail/115-1150821_default-avatar-comments-sign-in-icon-png.png'
     },
     newMessages: {
         type: Object,

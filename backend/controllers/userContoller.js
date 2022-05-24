@@ -4,13 +4,12 @@ const User = require('../models/User')
 const registerUser = async(req, res) => {
     try {
         const { name, email, password, staffID, username, picture } = req.body
-        console.log(req.body)
         const user = await User.create({ name, email, password, staffID, username, picture })
         res.status(201).json(user)
     } catch (error) {
        let msg;
        if(error.code == 11000){
-           msg = 'User already exists'
+           msg = 'User already exists check email or username'
        } else {
            msg = error.message
        }

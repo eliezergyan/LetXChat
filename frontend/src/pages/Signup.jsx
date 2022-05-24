@@ -54,7 +54,7 @@ function Signup() {
 
   async function handleSignup (e) {
     e.preventDefault()
-    if(!image) return alert("Please upload your profile picture")
+    // if(!image) return alert("Please upload your profile picture")
     const url = await uploadImage(image)
 
     // Register user
