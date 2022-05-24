@@ -20,6 +20,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter a password']
     },
+    employeeId: {
+        type: String,
+        required: [true, 'Please enter your employee ID']
+    },
+    username: {
+        type: String,
+        required: [true, 'Please enter a username']
+    },
     picture: {
         type: String,
 

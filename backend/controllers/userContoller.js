@@ -1,6 +1,6 @@
 const User = require('../models/User')
 
-
+// Unique email not working
 const registerUser = async(req, res) => {
     try {
         const { name, email, password, picture } = req.body
