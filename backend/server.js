@@ -85,7 +85,7 @@ io.on('connection', (socket)=>{
         socket.broadcast.emit('notifications', room)
     })
 
-    app.delete('/logout', async(req, res) => {
+app.delete('/logout', async(req, res) => {
         try {
             const {_id, newMessages} = req.body;
             const user = await User.findById(_id);
