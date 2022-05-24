@@ -10,6 +10,8 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [staffID, setStaffID] = useState('');
   const navigate = useNavigate()
   const [ signupUser, { isLoading, error }] = useSignupUserMutation();
 
@@ -56,10 +58,9 @@ function Signup() {
     const url = await uploadImage(image)
 
     // Register user
-    signupUser({name, email, password, picture: url}).then(({data}) => {
+    signupUser({name, email, username, staffID, password, picture: url}).then(({data}) => {
       if(data) {
-        console.log(data);
-        navigate('/login');
+        navigate('/chat');
       }
     })
   }
@@ -67,10 +68,9 @@ function Signup() {
   return (
       <Container>
           <Row>
-          <Col md={5} className="signup__bg"></Col>
-          <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column"> 
+          <Col md={15} className="d-flex align-items-center justify-content-center flex-direction-column"> 
               <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleSignup}>
-              <h1 className='text-center'>Create account</h1>
+              <h1 className='text-center'>Create Account</h1>
               <div className='signup-profile-pic__container'>
                 <img src={imagePreview || botImg} className='signup-profile-pic' alt="profile"/>
                 <label htmlFor='image-upload' className='image-upload-label' >
@@ -82,6 +82,16 @@ function Signup() {
               <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name}/>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Enter a username" onChange={(e) => setUsername(e.target.value)} value={username}/>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Staff ID</Form.Label>
+              <Form.Control type="text" placeholder="Enter your staff ID" onChange={(e) => setStaffID(e.target.value)} value={staffID}/>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail">

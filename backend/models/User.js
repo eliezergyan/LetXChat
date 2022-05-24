@@ -20,9 +20,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter a password']
     },
-    employeeId: {
+    staffID: {
         type: String,
-        required: [true, 'Please enter your employee ID']
+        required: [true, 'Please enter your staff ID']
     },
     username: {
         type: String,
