@@ -84,12 +84,12 @@ function Signup() {
               <Form.Control type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name}/>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Group className="mb-3" controlId="formUserName">
               <Form.Label>Username</Form.Label>
               <Form.Control type="text" placeholder="Enter a username" onChange={(e) => setUsername(e.target.value)} value={username}/>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Group className="mb-3" controlId="formStaffId">
               <Form.Label>Staff ID</Form.Label>
               <Form.Control type="text" placeholder="Enter your staff ID" onChange={(e) => setStaffID(e.target.value)} value={staffID}/>
               </Form.Group>

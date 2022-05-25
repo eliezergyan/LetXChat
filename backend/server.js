@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const colors = require('colors')
 const cors = require('cors')
+const multer = require('multer');
+
 const userRoutes = require('./routes/userRoutes')
 
 
