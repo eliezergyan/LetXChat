@@ -1,0 +1,10 @@
+.chat-logo {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+    font-family: Helvetica, sans-serif;
+}
+
+.chat-logo-x {
+    color: orange;
+}
