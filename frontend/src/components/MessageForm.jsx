@@ -27,9 +27,9 @@ function MessageForm() {
         return month + "/" + day + "/" + year;  
     }
 
-    function handleSubmit(e) {
+{ /*   function handleSubmit(e) {
        e.preventDefault() 
-    }
+    } */}
 
     function scrollToBottom(){
         messageEndRef.current?.scrollIntoView({behavior: 'smooth'})
@@ -61,7 +61,7 @@ function MessageForm() {
                     <>
                         <div className="alert alert-info conversation-info">
                             <div>
-                                Your conversation with {privateMemberMsg.name} <img src={privateMemberMsg.picture} className='conversation-profile-picture'/>
+                                Your conversation with {privateMemberMsg.name} <img src={privateMemberMsg.picture} className='conversation-profile-picture' alt='profile'/>
                             </div>
                         </div>
                     </>
@@ -75,7 +75,7 @@ function MessageForm() {
                             <div className={sender?.email === user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                 <div className='message-inner'>
                                     <div className='d-flex align-items-center mb-3'>
-                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.name}</p>
+                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
                                     </div>
                                     <di>
                                         <p className='message-content'>{content}</p>
@@ -92,20 +92,10 @@ function MessageForm() {
                     <Row>
                         <Col md={1}>
                             <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
-                                <i class="fa fa-video-camera" aria-hidden="true"></i>
+                            <i class="fa fa-upload" aria-hidden="true"></i>
                             </Button>
                         </Col>
-                        <Col md={1}>
-                            <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
-                                <i class="fa fa-camera" aria-hidden="true"></i>
-                            </Button>
-                        </Col>
-                        <Col md={1}>
-                            <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
-                                <i class="fa fa-microphone" aria-hidden="true"></i>
-                            </Button>
-                        </Col>
-                        <Col md={8}>
+                        <Col md={10}>
                             <Form.Group>
                                 <Form.Control type="text" placeholder="Your message" disabled={!user} value={message} onChange={(e)=> setMessage(e.target.value)}></Form.Control>
                             </Form.Group>
