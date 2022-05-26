@@ -44,7 +44,11 @@ function Navigation() {
                         {user.name}
                     </>
                 } id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Edit Profile</NavDropdown.Item>
+                <NavDropdown.Item>
+                    <LinkContainer to="/profile">
+                        <Nav.Link>Profile</Nav.Link>
+                    </LinkContainer>
+                </NavDropdown.Item>
                 <NavDropdown.Item>
                     <Button variant='danger' onClick={handleLogout}> 
                         Logout
