@@ -72,7 +72,7 @@ function MessageForm() {
                             <div className={sender?.email === user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                 <div className='message-inner'>
                                     <div className='d-flex align-items-center mb-3'>
-                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
+                                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
                                     </div>
                                     <div>
                                         <p className='message-content'>{content}</p>
