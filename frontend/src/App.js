@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Chat from './pages/Chat';
+import Profile from './pages/Profile'
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { AppContext, socket } from './context/appContext'
@@ -30,7 +31,7 @@ function App() {
           <>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<Signup />}/>
-            {/* Edit profile route */}
+            <Route path='/profile' element={<Profile />}/>
           </>
           )}
           <Route path='/chat' element={<Chat />}/>
