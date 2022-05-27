@@ -18,6 +18,7 @@ function App() {
   const [privateMemberMsg, setPrivateMemberMsg] = useState({});
   const [newMessages, setNewMessages] = useState({});
 
+
   const user = useSelector((state) => state.user);
   return (
     <AppContext.Provider value={{socket, currentRoom, setCurrentRoom, members, 
@@ -33,7 +34,7 @@ function App() {
             <Route path='/signup' element={<Signup />}/>
           </>
           )}
-          <Route path='/profile' element={<Profile />}/>
+          <Route path={`/profile/:id`} element={<Profile />}/>
           <Route path='/chat' element={<Chat />}/>
         </Routes>
       </BrowserRouter>

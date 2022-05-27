@@ -37,8 +37,8 @@ const appApi = createApi({
 
         // Edit the user profile
         editUser: builder.mutation({
-            query: (payload) => ({
-                url: '/users/profile',
+            query: ({id, ...payload}) => ({
+                url: `/users/profile/${id}`,
                 method: 'PUT',
                 body: payload,
             })

@@ -45,7 +45,7 @@ function Navigation() {
                     </>
                 } id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                    <LinkContainer to="/profile">
+                    <LinkContainer to={`/profile/${user._id}`}>
                         <Nav.Link>Profile</Nav.Link>
                     </LinkContainer>
                 </NavDropdown.Item>
