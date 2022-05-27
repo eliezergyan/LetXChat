@@ -4,7 +4,7 @@ import { useEditUserMutation } from '../services/appApi';
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useParams } from "react-router";
-import './Profile.css'
+import './Profile.css';
 
 
 function EditUser() {
