@@ -35,7 +35,6 @@ function MessageForm() {
     const todayDate = getFormattedDate();
 
     socket.off("room-messages").on("room-messages", (roomMessages) => {
-        console.log("room messages", roomMessages);
         setMessages(roomMessages);
     });
 
@@ -72,12 +71,12 @@ function MessageForm() {
                             <div className={sender?.email === user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                 <div className='message-inner'>
                                     <div className='d-flex align-items-center mb-3'>
-                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
+                                        <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
                                     </div>
-                                    <di>
+                                    <div>
                                         <p className='message-content'>{content}</p>
                                         <p className='message-timestamp-left'>{time}</p>
-                                    </di>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -89,7 +88,7 @@ function MessageForm() {
                     <Row>
                         <Col md={1}>
                             <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
-                            <i class="fa fa-upload" aria-hidden="true"></i>
+                            <i className="fa fa-upload" aria-hidden="true"></i>
                             </Button>
                         </Col>
                         <Col md={10}>

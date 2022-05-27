@@ -31,4 +31,18 @@ const loginUser = async(req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser }
+const editUserProfile = async(req, res) => {
+    try {
+        const { username, picture } = req.body
+        const filter = {_id: req.params.id}
+        const update = { username, picture }
+        const updatedProfile = await User.findOneAndUpdate(filter, update, {
+            new: true
+        })
+        res.status(200).json(updatedProfile)
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
+
+module.exports = { registerUser, loginUser, editUserProfile }

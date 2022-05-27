@@ -4,7 +4,6 @@ const colors = require('colors')
 const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 
-
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 const Message = require('./models/Message')

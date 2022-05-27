@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Chat from './pages/Chat';
+import Profile from './pages/Profile'
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { AppContext, socket } from './context/appContext'
@@ -16,6 +17,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [privateMemberMsg, setPrivateMemberMsg] = useState({});
   const [newMessages, setNewMessages] = useState({});
+
 
   const user = useSelector((state) => state.user);
   return (
@@ -30,9 +32,9 @@ function App() {
           <>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<Signup />}/>
-            {/* Edit profile route */}
           </>
           )}
+          <Route path={`/profile/:id`} element={<Profile />}/>
           <Route path='/chat' element={<Chat />}/>
         </Routes>
       </BrowserRouter>
