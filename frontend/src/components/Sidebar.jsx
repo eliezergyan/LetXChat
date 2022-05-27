@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ListGroup, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppContext } from '../context/appContext'
@@ -73,6 +73,23 @@ function Sidebar() {
                 {room.name}{currentRoom !== room.name && <span className="badge rounded-pill bg-primary">{user.newMessages[room.name]}</span>}
             </ListGroup.Item>
       ))}
+      <br></br>
+
+      {/*Display Current chatroom info*/}
+      <h2>Chatroom Info</h2>
+      <ListGroup>
+          <ListGroup.Item> Created By: {  }
+          {
+            rooms.filter((room) => room.name === currentRoom).map(room => room.createdBy)
+          }
+          </ListGroup.Item>
+          <ListGroup.Item> Date Created: {  }
+          {
+            rooms.filter((room) => room.name === currentRoom).map(room => room.createdAt).toString().slice(0, 10)
+          }
+          </ListGroup.Item>
+      </ListGroup>
+          
       </ListGroup>
       <br></br>
       <h2>Members</h2>
