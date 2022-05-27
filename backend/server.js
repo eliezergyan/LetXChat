@@ -3,6 +3,7 @@ const app = express()
 const colors = require('colors')
 const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
+const chatRoomRoutes = require('./routes/chatRoomRoutes')
 
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
@@ -23,7 +24,7 @@ app.use(cors())
 
 
 app.use('/users', userRoutes)
-
+app.use('/chatroom', chatRoomRoutes)
 
 const server = require('http').createServer(app)
 const io = require('socket.io')(server, {

@@ -12,6 +12,12 @@ const ChatRoomSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-}, {
+}, 
+{
     timestamps: true,
 })
+
+
+const ChatRoom = mongoose.model('ChatRoom', ChatRoomSchema);
+
+module.exports = ChatRoom;
