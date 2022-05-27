@@ -23,8 +23,6 @@ function Sidebar() {
 
     // dispatch for notifications
     dispatch(resetNotifications(room));
-
-
   }
 
   socket.off('notifications').on('notifications', (room) => {
@@ -33,9 +31,9 @@ function Sidebar() {
 
   useEffect(()=>{
     if(user){
-      setCurrentRoom('general');
+      setCurrentRoom('General');
       getRooms();
-      socket.emit('join-room', 'general');
+      socket.emit('join-room', 'General');
       socket.emit('new-user');
     }
   }, [])
@@ -71,12 +69,29 @@ function Sidebar() {
       <h2>Chatrooms</h2>
       <ListGroup>
         {rooms.map((room, idx) => (
-            <ListGroup.Item key={idx} onClick={()=> joinRoom(room)} active={room === currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
-                {room}{currentRoom !== room && <span className="badge rounded-pill bg-primary">{user.newMessages[room]}</span>}
+            <ListGroup.Item key={idx} onClick={()=> joinRoom(room.name)} active={room.name === currentRoom} style={{cursor: 'pointer', display:'flex', justifyContent: 'space-between'}}>
+                {room.name}{currentRoom !== room.name && <span className="badge rounded-pill bg-primary">{user.newMessages[room.name]}</span>}
             </ListGroup.Item>
       ))}
-      </ListGroup>
+      <br></br>
 
+      {/*Display Current chatroom info*/}
+      <h2>Chatroom Info</h2>
+      <ListGroup>
+          <ListGroup.Item> Created By: {  }
+          {
+            rooms.filter((room) => room.name === currentRoom).map(room => room.createdBy)
+          }
+          </ListGroup.Item>
+          <ListGroup.Item> Date Created: {  }
+          {
+            rooms.filter((room) => room.name === currentRoom).map(room => room.createdAt).toString().slice(0, 10)
+          }
+          </ListGroup.Item>
+      </ListGroup>
+          
+      </ListGroup>
+      <br></br>
       <h2>Members</h2>
       <ListGroup>
         {members.map((member) => (
