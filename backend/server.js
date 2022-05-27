@@ -4,7 +4,8 @@ const colors = require('colors')
 const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const chatRoomRoutes = require('./routes/chatRoomRoutes')
-
+const { getChatRooms } = require('./controllers/chatRoomController')
+ 
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 const Message = require('./models/Message')
@@ -13,7 +14,6 @@ const port = process.env.PORT || 5000
 
 // These chatroooms are hardcoded
 // Make it dynamic
-const rooms = ['general', 'tech', 'finance', 'crypto']
 
 // Connect to mongo atlas
 connectDB()
@@ -34,9 +34,7 @@ const io = require('socket.io')(server, {
     }
 })
 
-app.get('/rooms', (req, res) => {
-    res.json(rooms)
-})
+app.get('/rooms', getChatRooms)
 
 // Get last messages from room
 async function getLastMessagesFromRoom(room){
