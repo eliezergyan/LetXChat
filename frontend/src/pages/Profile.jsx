@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useParams } from "react-router";
 import './Profile.css'
-import botImg from '../assets/profile-pic-bot.jpg'
 
 
 function EditUser() {
   const user = useSelector(state => state.user)
+
+  const userAvartar = user.picture;
 
   const [username, setUsername] = useState(user.username);
 
@@ -80,7 +81,7 @@ function EditUser() {
               <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleEditUser}>
               <h1 className='text-center'>Edit Profile</h1>
               <div className='signup-profile-pic__container'>
-                <img src={imagePreview || botImg} className='signup-profile-pic' alt="profile"/>
+                <img src={imagePreview || userAvartar} className='signup-profile-pic' alt="profile"/>
                 <label htmlFor='image-upload' className='image-upload-label' >
                   <i className='fas fa-plus-circle add-picture-icon'></i>
                 </label>
