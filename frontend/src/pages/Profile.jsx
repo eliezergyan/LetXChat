@@ -10,6 +10,7 @@ import './Profile.css'
 function EditUser() {
   const user = useSelector(state => state.user)
 
+  // Getting Current User Avartar
   const userAvartar = user.picture;
 
   const [username, setUsername] = useState(user.username);
