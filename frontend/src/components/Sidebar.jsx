@@ -43,7 +43,7 @@ function Sidebar() {
   })
 
   function getRooms(){
-    fetch('http://localhost:5000/rooms').then(res => res.json()).then(data => setRooms(data))
+    fetch('https://letxchatapp.herokuapp.com/rooms').then(res => res.json()).then(data => setRooms(data))
   }
 
   function orderIds(id1, id2){
