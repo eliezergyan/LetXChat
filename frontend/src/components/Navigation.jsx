@@ -32,10 +32,10 @@ function Navigation() {
             <Nav className="ms-auto">
                 {!user &&
                 (<LinkContainer to="/login">
-                    <Nav.Link>Login</Nav.Link>
+                    <Nav.Link><div className='login__btn'>Login</div></Nav.Link>
                 </LinkContainer>) }
                 <LinkContainer to="/chat">
-                    <Nav.Link>Chat</Nav.Link>
+                    <Nav.Link><div className='chat__btn'>Chat</div></Nav.Link>
                 </LinkContainer>
                 {user && 
                 (<NavDropdown title={

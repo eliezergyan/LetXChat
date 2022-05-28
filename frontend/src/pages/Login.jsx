@@ -28,7 +28,7 @@ function Login() {
 
     return (
         <Container>
-            <Row>
+        <Row>
             <Col md={15} className="d-flex align-items-center justify-content-center flex-direction-column mt-5"> 
                 <Form style={{width: '80%', maxWidth: 500}} onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -53,9 +53,9 @@ function Login() {
                     </p>
                 </div>
                 </Form>
-            </Col>
-            </Row>
-        </Container>
+            </Col>     
+        </Row>
+    </Container>
 )
 }
 

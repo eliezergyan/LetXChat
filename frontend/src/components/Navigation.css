@@ -8,3 +8,36 @@
 .chat-logo-x {
     color: orange;
 }
+
+.login__btn {
+    margin-top: -2px;
+    margin-right: 1em;
+    color: black;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.login__btn:hover {
+    background-color: black; 
+    color: orange;
+}
+
+.chat__btn {
+    margin-top: -2px;
+    color: black;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.chat__btn:hover {
+    background-color: black; 
+    color: orange;
+}

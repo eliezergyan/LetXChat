@@ -7,9 +7,10 @@
 
 
 .home__container {
-    height: 88.5vh;
-    width: 100vw;
+    height: 90.5vh;
+    width: 100%;
     background-color: #F7F7F7;
+    overflow-x: hidden;
 }
 
 .app__description {
