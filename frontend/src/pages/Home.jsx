@@ -5,20 +5,26 @@ import './Home.css'
 
 function Home() {
   return (
+    <div className='home__container'>
     <Row>
-        <Col md={6} className="d-flex flex-direction-column align-items-center justify-content-center">
-            <div>
-                <h1>Collaborate and share ideas on a project</h1>
-                <p>LetXChat App lets you collaborate and share ideas with friends</p>
-                <LinkContainer to="/chat">
-                    <Button variant="success">Get Started<i className="fas fa-comments home-message-icon"></i></Button>   
+        <Col md={7} className="home__bg">
+          <div className='homepage__image'>
+            <img src='https://www.pngitem.com/pimgs/m/14-144882_people-connected-through-social-media-hd-png-download.png' />
+          </div>
+        </Col>
+        <Col md={5} className="d-flex flex-direction-column align-items-center justify-content-center">
+            <div className='app__description'>
+                <h1><span className='desc__connect'>Connect</span> and <span className='desc__share'>Share</span> ideas</h1>
+                <p>LetXChat is an instant messaging app that allows you connect and share ideas with colleagues on projects</p>
+                <LinkContainer to="/signup">
+                    <Button variant='warning'><span className='btn__text'>Get Started</span><i className="fas fa-comments home-message-icon"></i></Button>   
                 </LinkContainer>
             </div>
         </Col>
-        <Col md={6} className="home__bg">
-        </Col>
     </Row>
+    </div>
   )
 }
 
 export default Home
+

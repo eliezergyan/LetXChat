@@ -1,4 +1,37 @@
 .home-message-icon {
     margin-left: 10px;
     display: inline-block;
+    color: black;
+    background-color: #ffb62e
+}
+
+
+.home__container {
+    height: 88.5vh;
+    width: 100vw;
+    background-color: #F7F7F7;
+}
+
+.app__description {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2em;
+}
+
+.app__description h1 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.desc__connect {
+    font-weight: bold;
+}
+
+.desc__share {
+    font-weight: bold;
+}
+
+.btn__text {
+    font-weight: bold;
 }
