@@ -78,12 +78,17 @@ function Sidebar() {
       {/*Display Current chatroom info*/}
       <h2>Chatroom Info</h2>
       <ListGroup>
-          <ListGroup.Item> Created By: {  }
+          <ListGroup.Item><span>Current Chatroom:  </span>{  }
+          {
+            rooms.filter((room) => room.name === currentRoom).map(room => room.name)
+          }
+          </ListGroup.Item>
+          <ListGroup.Item><span>Created By:</span> {  }
           {
             rooms.filter((room) => room.name === currentRoom).map(room => room.createdBy)
           }
           </ListGroup.Item>
-          <ListGroup.Item> Date Created: {  }
+          <ListGroup.Item><span>Date Created:</span> {  }
           {
             rooms.filter((room) => room.name === currentRoom).map(room => room.createdAt).toString().slice(0, 10)
           }
