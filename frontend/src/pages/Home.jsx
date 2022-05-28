@@ -12,7 +12,7 @@ function Home() {
     <Row>
         <Col md={7} className="home__bg">
           <div className='homepage__image'>
-            <img src='https://www.pngitem.com/pimgs/m/14-144882_people-connected-through-social-media-hd-png-download.png' />
+            <img src='https://www.pngitem.com/pimgs/m/14-144882_people-connected-through-social-media-hd-png-download.png' alt='banner'/>
           </div>
         </Col>
         <Col md={5} className="d-flex flex-direction-column align-items-center justify-content-center">
