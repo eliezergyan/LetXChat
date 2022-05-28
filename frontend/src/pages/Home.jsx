@@ -15,7 +15,7 @@ function Home() {
         <Col md={5} className="d-flex flex-direction-column align-items-center justify-content-center">
             <div className='app__description'>
                 <h1><span className='desc__connect'>Connect</span> and <span className='desc__share'>Share</span> ideas</h1>
-                <p>LetXChat is an instant messaging app that allows you connect and share ideas with colleagues on projects</p>
+                <p>LetXChat is an instant messaging app that allows you to connect and share ideas with colleagues on projects</p>
                 <LinkContainer to="/signup">
                     <Button variant='warning'><span className='btn__text'>Get Started</span><i className="fas fa-comments home-message-icon"></i></Button>   
                 </LinkContainer>
