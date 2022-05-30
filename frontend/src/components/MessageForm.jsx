@@ -87,9 +87,12 @@ function MessageForm() {
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col md={1}>
+                        <div>
+                            <input style={{display: 'none'}} type="file" />
                             <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
                             <i className="fa fa-upload" aria-hidden="true"></i>
                             </Button>
+                        </div>
                         </Col>
                         <Col md={10}>
                             <Form.Group>

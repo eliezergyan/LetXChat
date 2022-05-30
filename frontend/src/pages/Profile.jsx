@@ -116,7 +116,7 @@ function EditUser() {
               <Button variant="danger" type="submit" onClick={handleCancel}>
                 Cancel
               </Button>
-              <Button variant="primary" type="submit">
+              <Button id='btn__save' variant="primary" type="submit">
                 {uploadingImg || isLoading ? 'Saving changes...' : 'Save Changes'}
               </Button>
               </Form>

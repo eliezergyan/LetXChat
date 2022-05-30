@@ -22,3 +22,9 @@
     cursor: pointer;
     z-index: 99;
 }
+
+
+#btn__save {
+    margin-left: 20px;
+}
+
