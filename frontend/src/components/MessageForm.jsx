@@ -6,9 +6,15 @@ import './MessageForm.css'
 
 function MessageForm() {
     const [message, setMessage] = useState("");
+    const [file, setFile] = useState()
     const user = useSelector((state) => state.user);
     const { socket, currentRoom, setMessages, messages, privateMemberMsg } = useContext(AppContext);
     const messageEndRef = useRef(null);
+    const inputFileRef = useRef(null);
+
+    function selectFile(){
+        inputFileRef.current.click();
+    }
 
     useEffect(()=>{
         scrollToBottom();
@@ -88,8 +94,8 @@ function MessageForm() {
                     <Row>
                         <Col md={1}>
                         <div>
-                            <input style={{display: 'none'}} type="file" />
-                            <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
+                            <input type="file" style={{ "display": "none" }} ref={inputFileRef} />
+                            <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user} onClick={selectFile}>
                             <i className="fa fa-upload" aria-hidden="true"></i>
                             </Button>
                         </div>
