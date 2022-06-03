@@ -73,7 +73,6 @@ To do:
 ## Acknowledgements
 Give credit here.
 - This project was inspired by AmaliTech
-- This project was based on [this tutorial](https://www.example.com).
 - Many thanks to...
 
 
