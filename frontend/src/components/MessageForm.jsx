@@ -1,4 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
+import Dropzone from 'react-dropzone';
+import Axios from 'axios';
 import { Form, Col, Row, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import {AppContext} from '../context/appContext';
@@ -6,15 +8,10 @@ import './MessageForm.css'
 
 function MessageForm() {
     const [message, setMessage] = useState("");
-    const [file, setFile] = useState()
     const user = useSelector((state) => state.user);
     const { socket, currentRoom, setMessages, messages, privateMemberMsg } = useContext(AppContext);
     const messageEndRef = useRef(null);
-    const inputFileRef = useRef(null);
 
-    function selectFile(){
-        inputFileRef.current.click();
-    }
 
     useEffect(()=>{
         scrollToBottom();
@@ -55,6 +52,28 @@ function MessageForm() {
         setMessage("");
     }
 
+    const onDrop = (files) => {
+        let formData = new FormData;
+        const config = {
+            header: {'content-type': 'multipart/formdata'}
+        }
+
+        formData.append("file", files[0])
+        Axios.post('https://letxchatapp.herokuapp.com/api/chat/uploadfiles', formData, config)
+        .then(response => {
+            if(response.data.success) {
+                const today = new Date();
+                const minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+                const time = today.getHours() + ":" + minutes;
+                const roomId = currentRoom;
+                socket.emit("message-room", roomId, response.data.url, user, time, todayDate);
+            }
+        })
+    }
+
+     
+
+
     return (
         <>
             <div className="messages-output">
@@ -79,9 +98,24 @@ function MessageForm() {
                                     <div className='d-flex align-items-center mb-3'>
                                         <p className='message-sender'>{sender._id === user?._id? "You" : sender.username}</p>
                                     </div>
+                                    <div className='message-content'>
                                     <div>
-                                        <p className='message-content'>{content}</p>
-                                        <p className='message-timestamp-left'>{time}</p>
+                                    {
+                                        content.substring(0, 8) === 'uploads'?
+                                        content.substring(content.length - 3, content.length) === 'mp4'?
+                                        <video 
+                                        style={{maxWidth:'200px'}}
+                                        src={`https://letxchatapp.herokuapp.com/${content}`} 
+                                        alt='video' type="video/mp4" controls/>
+                                        :
+                                        <img 
+                                        style={{maxWidth:'200px'}}
+                                        src={`https://letxchatapp.herokuapp.com/${content}`} alt='img'/>
+                                        :
+                                        <p>{content}</p>  
+                                    }
+                                    <p className='message-timestamp-left'>{time}</p> 
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -92,18 +126,24 @@ function MessageForm() {
             </div>
                 <Form onSubmit={handleSubmit}>
                     <Row>
-                        <Col md={1}>
-                        <div>
-                            <input type="file" style={{ "display": "none" }} ref={inputFileRef} />
-                            <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user} onClick={selectFile}>
-                            <i className="fa fa-upload" aria-hidden="true"></i>
-                            </Button>
-                        </div>
-                        </Col>
                         <Col md={10}>
                             <Form.Group>
                                 <Form.Control type="text" placeholder="Your message" disabled={!user} value={message} onChange={(e)=> setMessage(e.target.value)}></Form.Control>
                             </Form.Group>
+                        </Col>
+                        <Col md={1}>
+                        <Dropzone onDrop={onDrop}>
+                            {({getRootProps, getInputProps}) => (
+                                <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <Button style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>
+                                        <i className="fa fa-upload" aria-hidden="true"></i>
+                                    </Button>
+                                </div>
+                                </section>
+                            )}
+                        </Dropzone>
                         </Col>
                         <Col md={1}>
                             <Button variant="primary" type="submit" style={{width:'100%', backgroundColor:'orange'}} disabled={!user}>

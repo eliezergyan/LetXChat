@@ -28,12 +28,46 @@ app.use('/chatroom', chatRoomRoutes)
 const server = require('http').createServer(app)
 const io = require('socket.io')(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://letxchatapp.herokuapp.com/',
         methods: ['GET', 'POST']
     }
 })
 
 app.get('/rooms', getChatRooms)
+
+// Upload media
+const multer = require('multer')
+const fs = require("fs"); 
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, `${Date.now()}_${file.originalname}`)
+    },
+    // fileFilter: (req, file, cb) => {
+    //     const ext = path.extname(file.originalname)
+    //     if(ext !== '.jpg' && ext !== '.png' && ext !== '.mp4'){
+    //         return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
+    //     }
+    //     cb(null, true)
+    // }
+  })
+  
+const upload = multer({ storage: storage }).single("file")
+
+
+app.post('/api/chat/uploadfiles', (req, res) => {
+    upload(req, res, err => {
+        if(err){
+            return res.json({ success: false, err})
+        }
+        return res.json({ success: true, url: res.req.file.path })
+    });
+})
+
 
 // Get last messages from room
 async function getLastMessagesFromRoom(room){
@@ -72,6 +106,7 @@ io.on('connection', (socket)=>{
         socket.emit('room-messages', roomMessages)
     })
     socket.on('message-room', async(room, content, sender, time, date) => {
+        console.log(content)
         const newMessage = await Message.create({content, from: sender, time, date, to: room});
         let roomMessages = await getLastMessagesFromRoom(room);
         roomMessages = sortRoomMessagesByDate(roomMessages);
@@ -81,6 +116,24 @@ io.on('connection', (socket)=>{
 
         socket.broadcast.emit('notifications', room)
     })
+
+    // Sending an image
+    socket.on('base64 file', async (msg) => {
+        console.log('received base64 file from ' + msg.username);
+        socket.username = msg.username;
+        // socket.broadcast.emit('base64 image', //exclude sender
+        io.sockets.emit('base64 file',  //include sender
+    
+            {
+              username: socket.username,
+              file: msg.file,
+              fileName: msg.fileName
+            }
+    
+        );
+    });
+
+
 
 app.delete('/logout', async(req, res) => {
         try {
