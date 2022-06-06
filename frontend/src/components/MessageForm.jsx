@@ -59,9 +59,10 @@ function MessageForm() {
         }
 
         formData.append("file", files[0])
-        Axios.post('https://letxchatapp.herokuapp.com/api/chat/uploadfiles', formData, config)
+        Axios.post('http://localhost:5000/api/chat/uploadfiles', formData, config)
         .then(response => {
             if(response.data.success) {
+                console.log(response.data.url)
                 const today = new Date();
                 const minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
                 const time = today.getHours() + ":" + minutes;
@@ -100,9 +101,9 @@ function MessageForm() {
                                     </div>
                                     <div className='message-content'>
                                     <div>
-                                    {
-                                        content.substring(0, 8) === 'uploads'?
-                                        content.substring(content.length - 3, content.length) === 'mp4'?
+                                    {  
+                                        content.replace('\\', '/').substring(0, 8) === "uploads/"?
+                                        content.replace('\\', '/').substring(content.length - 3, content.length) === 'mp4'?
                                         <video 
                                         style={{maxWidth:'200px'}}
                                         src={`https://letxchatapp.herokuapp.com/${content}`} 
