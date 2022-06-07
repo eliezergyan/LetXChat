@@ -1,6 +1,6 @@
 # LetXChat App
 > LetXChat is an instant messaging app used by teams on a project 
-> Live demo [_here_](https://letxchatapp.herokuapp.com/). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo [_here_](https://letxchatapp.herokuapp.com/). 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
@@ -15,38 +15,35 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+- This project was part of a requirement for my training as a fullstack trainee
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- ReactJS
+- NodeJS
+- ExpressJS
+- MongoDB
+- Socket.io
 
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Send instant message in a project chatroom
+- Send private message
+- Receive notifications
 
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+- Install Node v16.14.0 +
+- 'npm install' at root folder
+- cd into frontend and 'npm install'
+- 'npm run dev' to run both frontend and backend concurrently
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+Sign up or login if you already have an account. Start sending messages in any of the chatrooms
 
 
 ## Project Status
@@ -58,17 +55,17 @@ Project is: _in progress_
 Room for improvement:
 - Improve the login page
 - Improve the chat interface
-- Sene all types of media files
+- Send all types of media files
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
+- Add Admin page
+- Admin should assign people to the chatrooms
 
 
 ## Acknowledgements
 Give credit here.
-- This project was inspired by AmaliTech
-- Many thanks to...
+- This project was inspired by Francis Class-Peters
+- Many thanks to Amlitech
 
 
 ## Contact
