@@ -28,7 +28,6 @@
 
 
 ## Features
-List the ready features here:
 - Send instant message in a project chatroom
 - Send private message
 - Receive notifications
@@ -63,7 +62,6 @@ To do:
 
 
 ## Acknowledgements
-Give credit here.
 - This project was inspired by Francis Class-Peters
 - Many thanks to Amlitech
 
