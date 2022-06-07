@@ -38,7 +38,7 @@ List the ready features here:
 ## Setup
 - Install Node v16.14.0 +
 - 'npm install' at root folder
-- cd into frontend and 'npm install'
+- Change directory into frontend and 'npm install'
 - 'npm run dev' to run both frontend and backend concurrently
 
 
