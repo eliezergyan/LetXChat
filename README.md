@@ -63,7 +63,7 @@ To do:
 
 ## Acknowledgements
 - This project was inspired by Francis Class-Peters
-- Many thanks to Amlitech
+- Many thanks to Amalitech
 
 
 ## Contact
